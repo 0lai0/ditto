@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    aargs: ['build', '-t' , 'gcr.io/$PROJECT_ID/my-gcp', '.']
+    args: ['build', '-t' , 'gcr.io/$PROJECT_ID/my-gcp', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/my-gcp']
@@ -11,5 +11,6 @@ steps:
            '--platform', 'managed',
            '--region', 'us-central1',
            '--allow-unauthenticated']
+
 substitutions:
   _SERVICE: 'first-try'
