@@ -1,16 +1,5 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t' , 'gcr.io/$PROJECT_ID/my-gcp', '.']
-  
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/my-gcp']
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'my-gcp',
-           '--image', 'gcr.io/$PROJECT_ID/my-gcp',
-           '--platform', 'managed',
-           '--region', 'us-central1',
-           '--allow-unauthenticated']
-
-substitutions:
-  _SERVICE: 'first-try'
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/quickstart-image'
